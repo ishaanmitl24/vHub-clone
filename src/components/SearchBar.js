@@ -10,7 +10,8 @@ const SearchBar = (props) => {
   };
   useEffect(()=>{
     props.getRowData(page);
-  },[page])
+  },[page]);
+  
   return (
     <Box
       sx={{
@@ -55,7 +56,7 @@ const SearchBar = (props) => {
         <input onChange={(event)=>props.getInput(event.target.value)} type="text" placeholder="Search for influencers" />
       </Paper>
       <TablePagination
-        count={108}
+        count={props.len}
         page={page}
         onPageChange={handleChangePage}
         rowsPerPage={20}

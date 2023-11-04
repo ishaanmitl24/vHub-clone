@@ -13,6 +13,7 @@ const Main = () => {
   });
   const [input, setInput] = useState("");
   const [page, setPage] = useState(0);
+  const [newlen,setLength] = useState(0);
   const getRowData = (pagedata) => {
     setPage(pagedata);
   };
@@ -21,11 +22,15 @@ const Main = () => {
   const getInput = (inputnew) => {
     setInput(inputnew);
   };
+
+  const getLength = (len)=>{
+    setLength(len);
+  }
   
   return (
     <div>
       <Header length={isPending ? null : data.instagram.length } />
-      <SearchBar getInput={getInput} getRowData={getRowData} />
+      <SearchBar  len={newlen} data={isPending ? null : data.instagram} getInput={getInput} getRowData={getRowData} />
       {isPending && (
         <Box sx={{ pt: 4, display: "flex",justifyContent: "center"}}>
           <CircularProgress size={100} sx={{ color: "#09c5f9" }} />
@@ -33,7 +38,7 @@ const Main = () => {
       )}
       {!isPending && (
         <Box sx={{ px: 5, pt: 1, pb: 6,borderRadius:4,overflowX:{md:'scroll',xs:'scroll'} }}>
-          <Table input={input} page={page} data={data.instagram} />
+          <Table getLength={getLength} input={input} page={page} data={data.instagram} />
         </Box>
       )}
     </div>

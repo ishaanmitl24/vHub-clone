@@ -12,7 +12,7 @@ import {
 
 const Table = (props) => {
   const [filterData, setFilterData] = useState(null);
-  console.log(props.input);
+
   useEffect(() => {
     if (props.input.length !== 0) {
       const newData = props.data.filter(
@@ -21,8 +21,10 @@ const Table = (props) => {
           true
       );
       setFilterData(newData);
+      props.getLength(newData.length);
     } else {
       setFilterData(props.data);
+      props.getLength(props.data.length);
     }
   }, [props.input]);
   useEffect(() => {
