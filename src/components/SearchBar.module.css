@@ -1,0 +1,14 @@
+.input input {
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: 'Inter' , sans-serif;
+  letter-spacing: 0.06em;
+  padding: 1px 7px;
+  cursor: pointer;
+}
+.input input:focus {
+  border: 2px solid black;
+  border-radius: 4px;
+}
